@@ -1,14 +1,7 @@
--- ============================================================
 --   DATOS DE EJEMPLO - Sistema Empresa Constructora
 --   Con identificadores únicos por tabla
--- ============================================================
-
 USE constructora;
-
--- ============================================================
 -- GRUPO 1: Catálogos
--- ============================================================
-
 INSERT INTO Cargo (idCargo, nombreCargo, descripcionCargo) VALUES
 ('CAR01', 'Gerente General',          'Responsable de la dirección general de la empresa'),
 ('CAR02', 'Jefe de Obra',             'Supervisa la ejecución de obras en campo'),
@@ -102,10 +95,7 @@ INSERT INTO MetodoPago (idMetodoPago, nombreMetodoPago, descripcionMetodoPago) V
 ('MET01', 'Transferencia', 'Transferencia bancaria'),
 ('MET02', 'Cheque',        'Pago mediante cheque'),
 ('MET03', 'Efectivo',      'Pago en efectivo');
-
--- ============================================================
 -- GRUPO 2: Clientes, Proveedores, Materiales, Empleados
--- ============================================================
 
 INSERT INTO Cliente (idCliente, nombre, idTipoCliente, documentoID, numCelular, email, direccion, fechaRegistro) VALUES
 ('CLI001', 'Carlos Mendoza Ríos',        'TC01', '7823451',    '70012345', 'carlos.mendoza@gmail.com',  'Av. Heroínas 123, Cochabamba',  '2023-01-15'),
@@ -141,10 +131,7 @@ INSERT INTO Empleado (idEmpleado, nombre, apellido, ci, fechaNacimiento, especia
 ('EMP005', 'Carmen Rosa', 'Gutierrez Paz',   '8956712', '1992-07-22', 'Contabilidad',               '74055555', 'c.gutierrez@constructora.com', 'Calle Hamiraya 400',   8000.00, '2019-04-20', 'EE01', 'CAR07', 'DEP04'),
 ('EMP006', 'Marco',       'Villanueva Cruz', '9067823', '1988-02-14', 'Electricidad Industrial',    '75066666', 'm.villanueva@constructora.com','Av. Tadeo Haenke 500', 6500.00, '2020-07-01', 'EE01', 'CAR05', 'DEP02'),
 ('EMP007', 'Rosa',        'Perez Alvarado',  '3401234', '1995-09-05', 'Administración',             '76077777', 'r.perez@constructora.com',     'Calle Punata 600',     5500.00, '2021-02-15', 'EE01', 'CAR08', 'DEP01');
-
--- ============================================================
 -- GRUPO 3: Proyectos, Órdenes de Compra, ProveedorMaterial
--- ============================================================
 
 INSERT INTO Proyecto (idProyecto, nombreProyecto, descripcion, idTipoProyecto, ubicacion, fechaInicio, fechaFinEstimada, fechaFinReal, idEstadoProyecto, idCliente) VALUES
 ('PROY001', 'Residencia Mendoza',       'Construcción de casa de dos plantas con jardín',       'TP01', 'Urbanización Las Brisas, Cochabamba', '2024-01-10', '2024-08-10', NULL,         'EP02', 'CLI001'),
@@ -169,10 +156,7 @@ INSERT INTO ProveedorMaterial (idProveedorMaterial, idProveedor, idMaterial, pre
 ('PROVMAT006', 'PROV05', 'MAT006', 75.00, 1),
 ('PROVMAT007', 'PROV05', 'MAT007', 90.00, 1),
 ('PROVMAT008', 'PROV01', 'MAT010', 85.00, 2);
-
--- ============================================================
 -- GRUPO 4: Contratos, Cotizaciones, Asignaciones
--- ============================================================
 
 INSERT INTO Contrato (idContrato, numeroContrato, idTipoContrato, fechaContrato, fechaFirma, fechaInicio, fechaVencimiento, montoTotal, idEstadoContrato, idProyecto) VALUES
 ('CONT001', 'CONT-2024-001', 'TCONT01', '2023-12-20', '2024-01-05', '2024-01-10', '2024-08-10',  185000.00, 'EC01', 'PROY001'),
@@ -221,9 +205,7 @@ INSERT INTO MaterialProyecto (idMaterialProyecto, idProyecto, idMaterial, cantid
 ('MP009', 'PROY004', 'MAT006',  500.000, '2023-09-10', 40000.00),
 ('MP010', 'PROY004', 'MAT007',  400.000, '2023-09-10', 38000.00);
 
--- ============================================================
 -- GRUPO 5: Detalles de compras y cotizaciones
--- ============================================================
 
 INSERT INTO DetalleCompra (idDetalleCompra, idOrdenCompra, idMaterial, cantidad, precioUnitario) VALUES
 ('DC001', 'OC001', 'MAT001', 150.000, 55.00),
@@ -259,9 +241,7 @@ INSERT INTO DetalleCotizacionInterna (idDetalleCotizacionInterna, idCotizacionIn
 ('DCI010', 'COTINT004', 'MAT006',  500.000, 75.00),
 ('DCI011', 'COTINT004', 'MAT007',  400.000, 90.00);
 
--- ============================================================
 -- GRUPO 6: Cuotas
--- ============================================================
 
 INSERT INTO Cuota (idCuota, idContrato, numeroCuota, fechaVencimiento, montoCuota, saldoPendiente, idEstadoPago) VALUES
 ('CUO001', 'CONT001', 1, '2024-02-10',  37000.00,      0.00, 'EPAGO03'),
@@ -280,9 +260,7 @@ INSERT INTO Cuota (idCuota, idContrato, numeroCuota, fechaVencimiento, montoCuot
 ('CUO014', 'CONT005', 1, '2024-07-01',  37500.00,      0.00, 'EPAGO03'),
 ('CUO015', 'CONT005', 2, '2024-10-01',  37500.00,  37500.00, 'EPAGO01');
 
--- ============================================================
 -- GRUPO 7: Pagos
--- ============================================================
 
 INSERT INTO PagoCliente (idPagoCliente, idContrato, idCuota, fechaPago, monto, idMetodoPago, idEstadoPago) VALUES
 ('PCLI001', 'CONT001', 'CUO001', '2024-02-08',  37000.00, 'MET01', 'EPAGO03'),
